@@ -1,45 +1,40 @@
-console.log("It works!");
-
+// Select Result row of calculator
 const calcResult = document.querySelector(".calc__result");
+// Select Input row of calculator
 const calcInput = document.querySelector(".calc__input");
-const btnClear = document.getElementById("btn-clear");
-const btnAddition = document.getElementById("btn-addition");
-const btnEquals = document.getElementById("btn-equals");
+// Select all buttons containing 'calc_btn' class
+const buttons = document.querySelectorAll("button[class*='calc__btn']");
+
+let calculation = [];
+let accumulativeCalc;
+
+// Function handeling calculation
+const calculate = (button) => {
+  const value = button.textContent;
+
+  if (value == "C") {
+    calculation = [];
+    calcResult.textContent = 0;
+    calcInput.textContent = 0;
+    calcInput.value = 0;
+  } else if (value == "=") {
+    console.log(accumulativeCalc);
+    calcResult.innerHTML = eval(accumulativeCalc);
+  } else {
+    calculation.push(value);
+    console.log(calculation);
+    accumulativeCalc = calculation.join("");
+    console.log(accumulativeCalc);
+    calcInput.textContent = accumulativeCalc;
+    calcInput.value = accumulativeCalc;
+  }
+};
+
+buttons.forEach((button) =>
+  button.addEventListener("click", () => calculate(button))
+);
 
 // Result row in calculation - will be used for sub-results and final result
 const result = (number) => {
   calcResult.innerHTML = number;
 };
-
-subInput = 0;
-
-const input = (number) => {
-  if (number == null) {
-    calcInput.addEventListener("input", (e) => {
-      // console.log(e.target.value);
-      subInput = e.target.value;
-    });
-  } else {
-    subInput = number;
-  }
-  return subInput;
-};
-
-// Clear button that will clear Result row
-btnClear.addEventListener("click", () => {
-  console.log("Clear button click");
-  result(0);
-  calcInput.value = input(0);
-});
-
-// Handeling Additon
-btnAddition.addEventListener("click", () => {
-  console.log("Addition button click");
-  console.log(input());
-  result(input());
-});
-
-// Handeling Equals
-btnEquals.addEventListener("click", () => {
-  console.log("Equals button click");
-});

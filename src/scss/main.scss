@@ -24,7 +24,7 @@ body {
 }
 
 .calc {
-  width: 12rem;
+  width: 15rem;
   
   background-color: white;
   box-shadow: 0px 0px 32px gray;
@@ -75,8 +75,47 @@ body {
     cursor: pointer;
   }
   
+  &__btn--tall {
+    width: 3rem;
+    height: 6rem;
+    
+    background-color: $color-btn;
+    border: none;
+
+    font-size: 150%;
+    font-weight: 300;
+
+    cursor: pointer;
+  }
+
+  &__btn--wide {
+    width: 6rem;
+    height: 3rem;
+    
+    background-color: $color-btn;
+    border: none;
+
+    font-size: 150%;
+    font-weight: 300;
+
+    cursor: pointer;
+  }
+
   &__btn--digit {
     width: 3rem;
+    height: 3rem;
+
+    background-color: $color-digit-btn;
+    border: none;
+
+    font-size: 150%;
+    font-weight: 300;
+
+    cursor: pointer;
+  }
+
+  &__btn--digit--wide {
+    width: 6rem;
     height: 3rem;
 
     background-color: $color-digit-btn;
@@ -91,13 +130,38 @@ body {
   &__btn:hover {
     background-color: $color-btn-hover;
   }
+
+  &__btn--tall:hover {
+    background-color: $color-btn-hover;
+  }
+
+  &__btn--wide:hover {
+    background-color: $color-btn-hover;
+  }
   
   &__btn--digit:hover {
+    background-color: $color-digit-btn-hover;
+  }
+
+  &__btn--digit--wide:hover {
     background-color: $color-digit-btn-hover;
   }
   
   &__controls {
     display: flex;
-    flex-wrap: wrap;
+    flex-flow: column;
+    &--row {
+      display: flex;
+      flex-flow: row nowrap;
+    }
+    &--row--nums {
+      display: flex;
+      flex-flow: row wrap;
+    }
+    &--column {
+      display: flex;
+      flex-flow: column;
+      flex-grow: 2;
+    }
   }
 }
